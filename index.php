@@ -24,7 +24,11 @@ try {
 	return 'Error: ' . $e->getAwsErrorMessage();
 }
 
+
 $bucketName = "test.zerops.example.com";
+
+
+echo "2";
 
 try {
 	$result = $s3Client->createBucket([
@@ -41,6 +45,9 @@ $uploader = new MultipartUploader($s3Client, $source, [
 	'bucket' => $bucketName,
 	'key' => uniqid(rand(), true) . '.zip',
 ]);
+
+
+echo "3";
 
 try {
 	$result = $uploader->upload();
