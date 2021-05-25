@@ -25,7 +25,7 @@ try {
 }
 
 
-$bucketName = "test.zerops.example.com";
+$bucketName = "test2.zerops.example.com";
 
 
 echo "2";
