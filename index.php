@@ -9,40 +9,44 @@ use Aws\Exception\AwsException;
 
 echo "1";
 
-$s3Client = new S3Client([
-    'endpoint' => 'https://s3.app.zerops.dev',
-    'region' => 'us-east-1',
-    'version' => 'latest',
-    'signature_version' => 'v4',
-    'credentials' => [
-	    'key' => $_SERVER["accessKeyId"],
-	    'secret' => $_SERVER["secretAccessKey"],
-   ],
-]);
+try {
+ 	$s3Client = new S3Client([
+		'endpoint' => 'https://s3.app.zerops.dev',
+		'region' => 'us-east-1',
+		'version' => 'latest',
+		'signature_version' => 'v4',
+		'credentials' => [
+			'key' => $_SERVER["accessKeyId"],
+			'secret' => $_SERVER["secretAccessKey"],
+		],
+	]);
+} catch (AwsException $e) {
+	return 'Error: ' . $e->getAwsErrorMessage();
+}
 
 $bucketName = "test.zerops.example.com";
 
 try {
-    $result = $s3Client->createBucket([
-        'Bucket' => $bucketName,
-    ]);
+	$result = $s3Client->createBucket([
+		'Bucket' => $bucketName,
+	]);
 } catch (AwsException $e) {
-    return 'Error: ' . $e->getAwsErrorMessage();
+	return 'Error: ' . $e->getAwsErrorMessage();
 }
 
 // Use multipart upload
 
 $source = 'file.zip';
 $uploader = new MultipartUploader($s3Client, $source, [
-    'bucket' => $bucketName,
-    'key' => uniqid(rand(), true) . '.zip',
+	'bucket' => $bucketName,
+	'key' => uniqid(rand(), true) . '.zip',
 ]);
 
 try {
-    $result = $uploader->upload();
-    echo "Upload complete: {$result['ObjectURL']}\n";
+	$result = $uploader->upload();
+	echo "Upload complete: {$result['ObjectURL']}\n";
 } catch (MultipartUploadException $e) {
-    echo $e->getMessage() . "\n";
+	echo $e->getMessage() . "\n";
 }
 
 ?>
