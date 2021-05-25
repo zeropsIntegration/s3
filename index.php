@@ -24,10 +24,6 @@ try {
     $result = $s3Client->createBucket([
         'Bucket' => $bucketName,
     ]);
-    return 'The bucket\'s location is: ' .
-        $result['Location'] . '. ' .
-        'The bucket\'s effective URI is: ' . 
-        $result['@metadata']['effectiveUri'];
 } catch (AwsException $e) {
     return 'Error: ' . $e->getAwsErrorMessage();
 }
