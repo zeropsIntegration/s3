@@ -7,6 +7,8 @@ use Aws\S3\MultipartUploader;
 use Aws\Exception\MultipartUploadException;
 use Aws\Exception\AwsException;
 
+echo "1";
+
 $s3Client = new S3Client([
     'endpoint' => 'https://s3.app.zerops.dev',
     'region' => 'us-east-1',
