@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 use Aws\S3\S3Client;
 use Aws\S3\MultipartUploader;
 use Aws\Exception\MultipartUploadException;
+use Aws\Exception\AwsException;
 
 $s3Client = new S3Client([
     'endpoint' => 'https://s3.app.zerops.dev',
@@ -16,6 +17,20 @@ $s3Client = new S3Client([
 	    'secret' => $_SERVER["secretAccessKey"],
 	],
 ]);
+
+$bucketName = "test.zerops.example.com";
+
+try {
+    $result = $s3Client->createBucket([
+        'Bucket' => $bucketName,
+    ]);
+    return 'The bucket\'s location is: ' .
+        $result['Location'] . '. ' .
+        'The bucket\'s effective URI is: ' . 
+        $result['@metadata']['effectiveUri'];
+} catch (AwsException $e) {
+    return 'Error: ' . $e->getAwsErrorMessage();
+}
 
 // Use multipart upload
 $source = 'file.zip';
