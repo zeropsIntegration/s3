@@ -35,7 +35,7 @@ try {
 // Use multipart upload
 $source = 'file.zip';
 $uploader = new MultipartUploader($s3Client, $source, [
-    'bucket' => 'your-bucket',
+    'bucket' => $bucketName,
     'key' => 'file.zip',
 ]);
 
