@@ -32,7 +32,7 @@ try {
 $source = 'file.zip';
 $uploader = new MultipartUploader($s3Client, $source, [
     'bucket' => $bucketName,
-    'key' => uniqid(rand(), true) . 'zip',
+    'key' => uniqid(rand(), true) . '.zip',
 ]);
 
 try {
