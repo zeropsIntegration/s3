@@ -10,12 +10,12 @@ use Aws\Exception\AwsException;
 $s3Client = new S3Client([
     'endpoint' => 'https://s3.app.zerops.dev',
     'region' => 'us-east-1',
-	'version' => 'latest',
+    'version' => 'latest',
     'signature_version' => 'v4',
-	'credentials' => [
+    'credentials' => [
 	    'key' => $_SERVER["accessKeyId"],
 	    'secret' => $_SERVER["secretAccessKey"],
-	],
+   ],
 ]);
 
 $bucketName = "test.zerops.example.com";
