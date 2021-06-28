@@ -9,6 +9,7 @@ use Aws\Exception\AwsException;
 
 echo "1";
 
+
 try {
  	$s3Client = new S3Client([
 		'endpoint' => 'https://s3.app.zerops.dev',
