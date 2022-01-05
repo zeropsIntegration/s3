@@ -5,7 +5,7 @@ phpnginx0:
     # build container be based on, can
     # be different from service technology
     # see docs for full list
-    base: [ php@8.1 ]
+    base: [ php@8 ]
 
     # *optional* add additional dependencies
     # on top of base technology (combination
