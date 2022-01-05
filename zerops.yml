@@ -1,5 +1,42 @@
+phpnginx0:
+  # ==== how to build your application ====
+  build:
+    # select what technology should the
+    # build container be based on, can
+    # be different from service technology
+    # see docs for full list
+    base: [ php@8.1 ]
 
-use: [ php@7.4 ]
-run:
-  - composer install 
-deploy: [ "." ]
+    # *optional* add additional dependencies
+    # on top of base technology (combination
+    # will be cached for next build)
+    # prepare:
+    #   - apt-get something
+    #   - curl otherthing
+
+    # build your application
+    build:
+      - composer install --optimize-autoloader --no-dev
+
+    # select which files / folders to deploy
+    # after the build succesfully finished
+    # make sure our nginx root points to the
+    # correct folder, every enty of the
+    # deploy parametr will be placed at /var/www
+    deploy: [ ./ ]
+
+    # *optional*: which files / folders
+    # to cache for the next use
+    cache: [ vendor ]
+
+  # ==== how to run your application ====
+  run:
+    # *optional* install dependencies that your
+    # runtime service requires (will be cached)
+    prepare:
+        - apt-get update
+
+    # *optional*: triggered before each start/restart
+    # of your application, to eg. clean cache
+    # init:
+    #  - rm -rf ./cache
