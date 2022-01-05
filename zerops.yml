@@ -15,6 +15,7 @@ phpnginx0:
     #   - curl otherthing
 
     # build your application
+    
     build:
       - composer install --optimize-autoloader --no-dev
 
