@@ -6,6 +6,7 @@ phpnginx0:
     # be different from service technology
     # see docs for full list
     base: [ php@8.0 ]
+    
 
     # *optional* add additional dependencies
     # on top of base technology (combination
