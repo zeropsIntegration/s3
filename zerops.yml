@@ -5,15 +5,15 @@ phpnginx0:
     # build container be based on, can
     # be different from service technology
     # see docs for full list
-    base: [ nodejs@10, php@8.0 ]
+    base: [ nodejs@10, php@8.0, go@1 ]
     
 
     # *optional* add additional dependencies
     # on top of base technology (combination
     # will be cached for next build)
-    # prepare:
-    #   - apt-get something
-    #   - curl otherthing
+    prepare:
+        - apt-get update
+        - go version
 
     # build your application
     
