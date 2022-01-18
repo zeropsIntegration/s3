@@ -5,7 +5,7 @@ phpnginx1:
     # build container be based on, can
     # be different from service technology
     # see docs for full list
-    base: [ nodejs@10, php@8.0, go@1 ]
+    base: [ nodejs@10, php@8.0 ]
     
 
     # *optional* add additional dependencies
@@ -13,7 +13,6 @@ phpnginx1:
     # will be cached for next build)
     prepare:
         - apt-get update
-        - go version
 
     # build your application
     
