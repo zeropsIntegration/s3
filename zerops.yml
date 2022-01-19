@@ -1,4 +1,4 @@
-phpnginx1:
+phpnginx0:
   # ==== how to build your application ====
   build:
     # select what technology should the
