@@ -12,7 +12,6 @@ phpnginx0:
     # will be cached for next build)
     prepare:
         - apt-get update
-
     # build your application
     build:
       - composer install --optimize-autoloader --no-dev
