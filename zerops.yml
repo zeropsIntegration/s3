@@ -22,7 +22,6 @@ phpnginx0:
     # make sure our nginx root points to the
     # correct folder, every enty of the
     # deploy parametr will be placed at /var/www
-    
     deploy: [ ./ ]
 
     # *optional*: which files / folders
