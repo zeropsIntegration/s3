@@ -12,6 +12,7 @@ phpnginx0:
     prepare:
         - apt-get update
     # build your application
+    
     build:
       - composer install --optimize-autoloader --no-dev
       - npm i
