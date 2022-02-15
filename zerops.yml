@@ -16,7 +16,6 @@ phpnginx0:
     build:
       - composer install --optimize-autoloader --no-dev
       - npm i
-
     # select which files / folders to deploy
     # after the build succesfully finished
     # make sure our nginx root points to the
